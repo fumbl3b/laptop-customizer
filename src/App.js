@@ -15,6 +15,7 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 
 class App extends Component {
   state = {
+    features: {},
     selected: {
       Processor: {
         name: '17th Generation Intel Core HB (7 Core with donut spare)',
