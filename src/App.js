@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
 import FEATURES from './FEATURES';
-import Parts from './Parts';
+import Header from './Header';
+import MainForm from './MainForm';
 import MainSummary from './MainSummary';
 import './App.css';
 
@@ -49,40 +50,18 @@ class App extends Component {
   render() {
     const { features, selected } = this.state;
     
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature];
-
-      return (
-        <div className="summary__option" key={featureHash}>
-          <div className="summary__option__label">{feature} </div>
-          <div className="summary__option__value">{selectedOption.name}</div>
-          <div className="summary__option__cost">
-            {USCurrencyFormat.format(selectedOption.cost)}
-          </div>
-        </div>
-      );
-    });
-
-
 
 
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+        <Header />
         <main>
-          <form className="main__form">
-            <h2>Customize your laptop</h2>
-            <Parts 
-              features={features}
-              selected={selected}
-              handleUpdate={this.updateFeature}
-              currencyFormat={USCurrencyFormat}
-            />
-            
-          </form>
+          <MainForm 
+            features={features}
+            selected={selected}
+            handleUpdate={this.updateFeature}
+            currencyFormat={USCurrencyFormat}
+          />
           <MainSummary 
             features={features}
             selected={selected}
