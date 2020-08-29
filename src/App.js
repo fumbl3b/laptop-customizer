@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 // in both URLs and html attributes
 import FEATURES from './FEATURES';
 import Parts from './Parts';
+import MainSummary from './MainSummary';
 import './App.css';
 
 // This object will allow us to
@@ -63,10 +64,8 @@ class App extends Component {
       );
     });
 
-    const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost,
-      0
-    );
+
+
 
     return (
       <div className="App">
@@ -84,16 +83,11 @@ class App extends Component {
             />
             
           </form>
-          <section className="main__summary">
-            <h2>Your cart</h2>
-            {summary}
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
-          </section>
+          <MainSummary 
+            features={features}
+            selected={selected}
+            currencyFormat={USCurrencyFormat}
+          />
         </main>
       </div>
     );
