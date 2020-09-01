@@ -3,10 +3,7 @@ import Cart from './Cart';
 import SummaryTotal from './SummaryTotal';
 
 export default function MainSummary(props) {
-    const total = Object.keys(props.selected).reduce(
-        (acc, curr) => acc + props.selected[curr].cost,
-        0
-      );
+    const total = Object.keys(props.selected).reduce((acc, curr) => acc + props.selected[curr].cost, 0);
    
     return (
         <section className="main__summary">
